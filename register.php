@@ -34,10 +34,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['form'] == 'addUser') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 
 <body>
-    <form action="register.php" method="POST">
+    <form action="register.php" method="POST" id="register-form">
 
         <input type="hidden" name="form" value="addUser">
 

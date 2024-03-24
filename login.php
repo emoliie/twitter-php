@@ -45,10 +45,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['form'] == 'login') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 
 <body>
-    <form action="login.php" method="POST">
+    <form action="login.php" method="POST" id="login-form">
 
         <input type="hidden" name="form" value="login">
 

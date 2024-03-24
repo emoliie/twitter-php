@@ -52,46 +52,48 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['form'] == 'searchTweet') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Twitter</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
 <body>
     <h1>Bienvenu(e) <?php echo $_SESSION['name'] ?> !</h1>
 
-    <form action="" method="POST">
-        <input type="hidden" name="form" value="searchTweet">
+    <div class="bloc">
+        <form action="" method="POST">
+            <input type="hidden" name="form" value="searchTweet">
 
-        <input type="text" name="search" id="search" placeholder="Rechercher un tweet">
+            <input type="text" name="search" id="search" placeholder="Rechercher un tweet">
 
-        <button type="submit">Rechercher</button>
-
-    </form>
-
-    <form action="" method="POST">
-        <input type="hidden" name="form" value="addTweet">
-
-        <input type="text" name="content" id="tweet" placeholder="Quoi de neuf ?">
-
-        <button type="submit">Poster</button>
-    </form>
-
-    <?php
-    foreach ($tweets as $tweet) : ?>
-
-        <form action="delete-tweet.php" method="POST">
-            <input type="hidden" name="form" value="supprimer">
-            <input type="hidden" name="suppr" value="<?php echo $tweet['id']; ?>">
-
-            <?php echo '<li>' . $tweet['name'] . ' ' . $tweet['content'] . ' ' . $tweet['createdAt'] .
-
-                (($_SESSION["id"] == $tweet["user_id"]) ?
-                    ' <button type="submit">Supprimer</button>' : "")
-
-                . '</li>'; ?>
-
+            <button type="submit">Rechercher</button>
 
         </form>
 
-    <?php endforeach; ?>
+        <form action="" method="POST">
+            <input type="hidden" name="form" value="addTweet">
+
+            <input type="text" name="content" id="tweet" placeholder="Quoi de neuf ?">
+
+            <button type="submit">Poster</button>
+        </form>
+    </div>
+
+    <div class="tweets">
+        <?php
+        foreach ($tweets as $tweet) : ?>
+
+            <form action="delete-tweet.php" method="POST">
+                <input type="hidden" name="form" value="supprimer">
+                <input type="hidden" name="suppr" value="<?php echo $tweet['id']; ?>">
+
+                <?php echo '<li id="tweet">' . $tweet['name'] . ' ' . $tweet['content'] . ' ' . $tweet['createdAt'] .
+
+                    (($_SESSION["id"] == $tweet["user_id"]) ?
+                        ' <button type="submit">Supprimer</button>' : "")
+                    . '</li>'; ?>
+            </form>
+
+        <?php endforeach; ?>
+    </div>
 
 
 </body>
